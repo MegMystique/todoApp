@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>TODO APP</span>
+</mat-toolbar>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Введите задачу" [(ngModel)]="newTodo.title" type="text" (keyup.enter)="addTodo()">
+</mat-form-field>
+<app-todo-manage-panel></app-todo-manage-panel>
+
+<section class="main" *ngIf="todos.length > 0">
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo">List todo's </app-todo-item>
+</section>
+
+<div *ngIf="!todos.length" >Нет задач</div>

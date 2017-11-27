@@ -1,0 +1,19 @@
+<div>
+  <mat-checkbox [(ngModel)]="todo.complete"></mat-checkbox>
+  <button mat-button *ngIf="!todo.edit" (mouseenter)="todo.showEditButtons=true"
+          (mouseleave)="todo.showEditButtons=false">{{todo.title}}
+    <button mat-icon-button color="accent">
+      <mat-icon aria-label="Example icon-button with a heart icon" *ngIf="todo.showEditButtons"
+                (click)="$event.preventDefault();todo.edit=true;">edit
+      </mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteTodo(todo)">
+      <mat-icon aria-label="Example icon-button with a heart icon" *ngIf="todo.showEditButtons">close</mat-icon>
+    </button>
+  </button>
+
+  <mat-form-field *ngIf="todo.edit"><input *ngIf="todo.edit" matInput [(ngModel)]="todo.title">
+  </mat-form-field>
+
+  <button *ngIf="todo.edit" (click)="todo.edit=false;" mat-raised-button color="accent">Save</button>
+</div>

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "0",
+    "complete": false,
+    "title": "Посадить цветы",
+    "priority": 1
+  }, {
+    "id": "1",
+    "complete": true,
+    "title": "Полить цветы",
+    "priority": 0
+  }
+]
