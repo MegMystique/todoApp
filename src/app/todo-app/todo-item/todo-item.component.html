@@ -1,5 +1,5 @@
 <div>
-  <mat-checkbox [(ngModel)]="todo.complete"></mat-checkbox>
+  <mat-checkbox [(ngModel)]="todo.complete" (change)="updateTodo(todo)"></mat-checkbox>
   <button mat-button *ngIf="!todo.edit" (mouseenter)="todo.showEditButtons=true"
           (mouseleave)="todo.showEditButtons=false">{{todo.title}}
     <button mat-icon-button color="accent">
@@ -12,8 +12,8 @@
     </button>
   </button>
 
-  <mat-form-field *ngIf="todo.edit"><input *ngIf="todo.edit" matInput [(ngModel)]="todo.title">
+  <mat-form-field *ngIf="todo.edit"><input name="title" title="title" type="text" *ngIf="todo.edit" matInput [(ngModel)]="todo.title" >
   </mat-form-field>
 
-  <button *ngIf="todo.edit" (click)="todo.edit=false;" mat-raised-button color="accent">Save</button>
+  <button *ngIf="todo.edit" (click)="updateTodo(todo)" mat-raised-button color="accent">Save</button>
 </div>

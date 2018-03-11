@@ -1,24 +1,30 @@
 import {Injectable} from '@angular/core';
-import {Todo} from './todo';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpClient} from '@angular/common/http';
-import { HttpClientModule }   from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {TodoStreamService} from './todo-stream.service'
 
 @Injectable()
 export class TodoService {
+  apiUrl = 'http://127.0.0.1:5000/todo/api/v1.0/';
 
-  constructor(private http: HttpClient, private streamService:TodoStreamService) {
+  constructor(private http: HttpClient) {
   }
 
 
   loadTodosFromServer() {
-    //const headers = this.authService.getHeaders();
-    return this.http.get('assets/todoData.json')
-      .subscribe((res: Response) => {this.streamService.setTodos(res);
-    });
+    return this.http.get(this.apiUrl + `tasks`)
+  }
+
+  addTodo(todo) {
+    return this.http.post(this.apiUrl + `tasks`, todo)
+  }
+
+  removeTodo(id) {
+    return this.http.delete(this.apiUrl + `tasks/${id}`)
+  }
+
+  updateTodo(todo) {
+    return this.http.put(this.apiUrl + `tasks/${todo.id}`, todo)
   }
 
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {TodoStreamService} from './../../todo-stream.service'
+import {TodoStreamService} from '../../todo-stream.service'
+
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
@@ -8,13 +9,19 @@ import {TodoStreamService} from './../../todo-stream.service'
 export class TodoItemComponent implements OnInit {
   @Input() todo;
 
-  constructor(private streamService: TodoStreamService) {
+  constructor(
+     private streamService: TodoStreamService
+  ) {
   }
 
   ngOnInit() {
   }
 
-  deleteTodo(todo){
-    this.streamService.removeTodo(todo)
+  deleteTodo(todo) {
+      this.streamService.removeTodo(todo);
+  }
+
+  updateTodo(todo) {
+    this.streamService.updateTodo(todo);
   }
 }
